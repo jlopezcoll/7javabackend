@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.util.Hashtable;
 //import java.util.Properties;
@@ -26,7 +24,7 @@ public class Login extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void procesoAutentificacionLDAP(HttpServletRequest request, HttpServletResponse response)
     		   throws ServletException, IOException {
 
     		  final String SUCCESS = "sucess.jsp";
@@ -37,9 +35,11 @@ public class Login extends HttpServlet {
 
     		  Hashtable<String, String> env = new Hashtable<>();
     		  //Properties env = new Properties();
-
-    		  boolean b = false;
-
+    		  
+    		  //Variable control autentidicación
+    		  boolean autentificado = false;
+    		  
+    		  //Declaramos parametros para la conexión LDAP
     		  env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
     		  env.put(Context.PROVIDER_URL, "ldap://192.168.0.157:389");
     		  env.put(Context.SECURITY_AUTHENTICATION, "simple");
@@ -47,27 +47,25 @@ public class Login extends HttpServlet {
     		  env.put(Context.SECURITY_CREDENTIALS, password);
 
     		  try {
-    		   // Create initial context
+    		   // Creamos el contexto inicial
     		   DirContext ctx = new InitialDirContext(env);
 
-    		   // Close the context when we're done
-    		   b = true;
+    		   // Establecemos variable y cerramos el contexto
+    		   autentificado = true;
     		   ctx.close();
 
     		  } catch (NamingException e) {
-    		   b = false;
+    			  autentificado = false;
     		  } finally {
-    		   if (b) {
-    		    System.out.print("Success");
-    		    strUrl = SUCCESS;
-    		    //request.getRequestDispatcher("sucess.jsp").forward(request,  response);
-    		    //response.sendRedirect("sucess.jsp");
-    		   } else {
-    		    System.out.print("Failure");
-    		    //response.sendRedirect("failure.jsp");
-    		    strUrl = FAILURE;
+    			  if (autentificado) {
+    				  System.out.print("Success");
+    				  strUrl = SUCCESS;
+    			   }else {
+    				  System.out.print("Failure");
+    				  strUrl = FAILURE;
     		   }
     		  }
+    		  //Enviamos a JSP correspondiente
     		  RequestDispatcher rd = request.getRequestDispatcher(strUrl);
     		  rd.forward(request, response);
 
@@ -79,7 +77,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//processRequest(request, response);
 	}
 
 	/**
@@ -88,7 +85,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		processRequest(request, response);
+		procesoAutentificacionLDAP(request, response);
 	}
 
 }
