@@ -16,14 +16,14 @@ Tener implementado un directorio con protocolo Lightweight Directory Access Prot
 
 ## Construido con 🛠️
 
-_Estas son las herramientas que hemos usado en el proyecto_
+_Estas son las herramientas que hemos usado en el producto 1_
 
 * [Eclipse](hhttps://www.eclipse.org/) - IDE para Enterprise Java Developers
 * [JDK](https://www.oracle.com/es/java/technologies/javase/javase-jdk8-downloads.html) - Java SE Development Kit 8
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [Apache Tomcat](http://tomcat.apache.org/) - Servidor de aplicaciones
 * [Turnkey Linux](https://www.turnkeylinux.org/openldap/) - Implementación de LDAP
-* [Bootstrap]https://getbootstrap.com/) - Framework para la interfaz de usuario
+* [Bootstrap](https://getbootstrap.com/) - Framework para la interfaz de usuario
 
 
 ## Autores ✒️
