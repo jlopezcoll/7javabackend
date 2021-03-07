@@ -22,7 +22,7 @@ _Estas son las herramientas que hemos usado en el producto 1_
 * [JDK](https://www.oracle.com/es/java/technologies/javase/javase-jdk8-downloads.html) - Java SE Development Kit 8
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [Apache Tomcat](http://tomcat.apache.org/) - Servidor de aplicaciones
-* [Turnkey Linux](https://www.turnkeylinux.org/openldap/) - Implementación de LDAP
+* [OpenLDAP](https://www.openldap.org/) - Implementación de LDAP
 * [Bootstrap](https://getbootstrap.com/) - Framework para la interfaz de usuario
 
 
