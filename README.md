@@ -1,12 +1,12 @@
-# 7J SOPA DE LETRAS
+# 7J - SOPA DE LETRAS
 
 _Desarrollado para la UOC y el proyecto **(ICC02_P7) Aplicación backend con tecnologia Java en servidores de aplicaciones**_
 
-## Comenzando 🚀
+## Introducción 🚀
 
 _Hemos comenzado con el **Producto1** en el que instalamos el entorno de desarrollo y programamos un servlet para la autentificación LDAP._
 
-## Pre-requisitos 📋
+## Requisitos 📋
 
 _Será necesario_
 
@@ -14,7 +14,7 @@ _Será necesario_
 Tener implementado un directorio con protocolo Lightweight Directory Access Protocol (LDAP)
 ```
 
-## Construido con 🛠️
+## Herramientas 🛠️
 
 _Estas son las herramientas que hemos usado en el producto 1_
 
@@ -22,7 +22,8 @@ _Estas son las herramientas que hemos usado en el producto 1_
 * [JDK](https://www.oracle.com/es/java/technologies/javase/javase-jdk8-downloads.html) - Java SE Development Kit 8
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [Apache Tomcat](http://tomcat.apache.org/) - Servidor de aplicaciones
-* [OpenLDAP](https://www.openldap.org/) - Implementación de LDAP
+* [OpenLDAP](https://www.openldap.org/) - Implementación libre del protocolo LDAP
+* [Turnkey Linux](https://www.turnkeylinux.org/openldap/) - Distribución de Linux con la implementación LDAP
 * [Bootstrap](https://getbootstrap.com/) - Framework para la interfaz de usuario
 
 
