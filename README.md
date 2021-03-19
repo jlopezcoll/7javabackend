@@ -5,6 +5,7 @@ _Desarrollado para la UOC y el proyecto **(ICC02_P7) Aplicación backend con tec
 ## Introducción 🚀
 
 _Hemos comenzado con el **Producto1** en el que instalamos el entorno de desarrollo y programamos un servlet para la autentificación LDAP._
+_Continuamos con el **Producto1**_
 
 ## Requisitos 📋
 
