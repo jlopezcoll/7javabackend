@@ -1,4 +1,4 @@
-package sopadeletras.model;
+package com.sopadeletras.model;
 
 public class Sopa {
 	
