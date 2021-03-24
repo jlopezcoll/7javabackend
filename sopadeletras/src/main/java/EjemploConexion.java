@@ -19,6 +19,8 @@ public class EjemploConexion {
 			conectar();
 			consultaSinPreparar();
 			consultaPreparada("c%");
+			System.out.println("------------------");
+			consultaPreparadaINT(1);
 		} finally {
 			cerrar();
 		}		
@@ -60,6 +62,23 @@ public class EjemploConexion {
 		statement.close();
 		
 	}
+	
+	private void consultaPreparadaINT(int id) throws SQLException{
+		String query = "SELECT * FROM diccionario WHERE idPalabra = ?";
+		PreparedStatement statement = conexion.prepareStatement(query);
+		statement.setInt(1, id);
+		//statement.setInt(1,  nombre);
+		ResultSet set = statement.executeQuery();
+		while (set.next()) {
+			int idPalabra = set.getInt("idPalabra");
+			String palabra = set.getString("palabra");
+			System.out.println("Palabra " + idPalabra + " " + palabra);
+		}
+		set.close();
+		statement.close();
+		
+	}
+	
 	
 	public void cerrar() throws SQLException{
 		if (conexion != null) {
