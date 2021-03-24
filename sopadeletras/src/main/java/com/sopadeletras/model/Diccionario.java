@@ -20,7 +20,7 @@ public class Diccionario {
 
 
 
-		public int getIdPalabra() {
+	public int getIdPalabra() {
 		return idPalabra;
 	}
 
