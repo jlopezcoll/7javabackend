@@ -22,7 +22,7 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 			conn = MySqlDB.conectar();
 			String query = "INSERT INTO sopa (idJugador, puntos) VALUES (?,?)";
 			stat = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stat.setInt(1, t.getIdJugador());
+			stat.setString(1, t.getIdJugador());
 			stat.setInt(2, t.getPuntos());			
 			stat.executeUpdate();
 			//Capturamos el ID de la sopa insertada
@@ -75,28 +75,69 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 		}
 	}
 	@Override
-	public List<Sopa> obtenerTodos() throws SQLException {
+	public List<Sopa> obtenerTodos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Sopa obtener(Integer id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public Sopa obtener(Integer id){
+		Connection conn = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;		
+		Sopa sopa= null;
+		try {
+			conn = MySqlDB.conectar();
+			String query = "SELECT * FROM sopa WHERE idSopa = ?";
+			stat = conn.prepareStatement(query);
+			stat.setInt(1, id);
+			rs = stat.executeQuery();
+			if (rs.next()) {
+				sopa = new Sopa(rs.getInt(1), rs.getString(2), rs.getInt(3));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}				
+			}
+			if (stat != null) {
+				try {
+					stat.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}				
+			}
+			try {
+				MySqlDB.desconetar();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return sopa;
 	}
 	
 	
-	public static void main(String[] args) throws SQLException {
+	/*public static void main(String[] args) throws SQLException {
 		SopaDAO prueba = new SopaDAO();
-		Sopa nuevaSopa = new Sopa(10, 11000);
-		prueba.insertar(nuevaSopa);
-		System.out.println(nuevaSopa.getIdSopa());
-		nuevaSopa.setPuntos(0);
-		prueba.modificar(nuevaSopa);
+		//SopaDAO prueba2 = new SopaDAO();
+		Sopa nuevaSopaJ = new Sopa("Javi", 11000);
+		Sopa nuevaSopa2 = prueba.obtener(1);
+		prueba.insertar(nuevaSopaJ);
+		System.out.println(nuevaSopaJ.getIdJugador() + nuevaSopaJ.getPuntos());
+		System.out.println(nuevaSopa2.getIdSopa() + nuevaSopa2.getIdJugador() + nuevaSopa2.getPuntos());
+		nuevaSopa2.setPuntos(2000);
+		prueba.modificar(nuevaSopa2);
+		System.out.println(nuevaSopa2.getIdJugador() + nuevaSopa2.getPuntos());
 		//prueba
 		
-	}
+	}*/
 	
 	
 

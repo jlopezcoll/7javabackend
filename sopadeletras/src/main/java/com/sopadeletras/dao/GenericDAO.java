@@ -3,6 +3,7 @@ package com.sopadeletras.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+
 public interface GenericDAO<T, K> {
 	
 	void insertar(T t) throws SQLException;
@@ -11,8 +12,9 @@ public interface GenericDAO<T, K> {
 	
 	void eliminar(T t) throws SQLException;
 	
-	List<T> obtenerTodos() throws SQLException;
+	List<T> obtenerTodos();
 	
-	T obtener(K id) throws SQLException;
+	T obtener(K id);
+
 
 }

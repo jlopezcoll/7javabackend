@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">   
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">		
-    <script src="js/bootstrap.min.js"></script>     
-    </head>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -27,6 +26,7 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-center links">
 					<h3>BIENVENIDO <%=request.getParameter("username").toUpperCase()%></h3>
+					<h2>Con clave <%=request.getParameter("password")%></h2>
 				</div>
 
 			</div>

@@ -68,7 +68,7 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 	}
 
 	@Override
-	public List<Diccionario> obtenerTodos() throws SQLException {
+	public List<Diccionario> obtenerTodos() {
 		Connection conn = null;
 		PreparedStatement stat = null;
 		ResultSet rs = null;		
@@ -80,7 +80,7 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			stat = conn.prepareStatement(query);
 			rs = stat.executeQuery();
 			while (rs.next()) {
-				palabra = new Diccionario(rs.getString(2));
+				palabra = new Diccionario(rs.getInt(1), rs.getString(2));
 				palabras.add(palabra);
 			}
 		} catch (SQLException e) {
@@ -100,13 +100,18 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 					e.printStackTrace();
 				}				
 			}
-			MySqlDB.desconetar();
+			try {
+				MySqlDB.desconetar();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return palabras;	
 	}
 
 	@Override
-	public Diccionario obtener(Integer id) throws SQLException {
+	public Diccionario obtener(Integer id) {
 		Connection conn = null;
 		PreparedStatement stat = null;
 		ResultSet rs = null;		
@@ -138,25 +143,30 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 					e.printStackTrace();
 				}				
 			}
-			MySqlDB.desconetar();
+			try {
+				MySqlDB.desconetar();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return palabra;
 	}
 
 	//Pruebas de funcionamiento
-	public static void main(String[] args) throws SQLException {
+	/*public static void main(String[] args) throws SQLException {
 		DiccionarioDAO prueba = new DiccionarioDAO();
-		System.out.println(prueba.obtener(2).getPalabra());
-		System.out.println(prueba.obtener(5).getPalabra());
-		System.out.println(prueba.obtener(3).getPalabra());
-		System.out.println("--------------------------------");
-		List<Diccionario> listPalabras = prueba.obtenerTodos();
-		for (Diccionario diccionario : listPalabras) {
-			System.out.println(diccionario.getPalabra());
-		}
-		System.out.println("--------- Insertamos una palabra -----------------------");
-		Diccionario nuevaPalabra = new Diccionario("motor");
-		prueba.insertar(nuevaPalabra);
+		//System.out.println(prueba.obtener(2).getPalabra());
+		//System.out.println(prueba.obtener(5).getPalabra());
+		//System.out.println(prueba.obtener(3).getPalabra());
+		//System.out.println("--------------------------------");
+		//List<Diccionario> listPalabras = prueba.obtenerTodos();
+		//for (Diccionario diccionario : listPalabras) {
+			//System.out.println(diccionario.getPalabra());
+		//}
+		//System.out.println("--------- Insertamos una palabra -----------------------");
+		//Diccionario nuevaPalabra = new Diccionario("motor");
+		//prueba.insertar(nuevaPalabra);
 		//prueba.eliminar(nuevaPalabra);
 		System.out.println("--------- Listado con palabra insertada -----------------------");
 		List<Diccionario> listPalabras2 = prueba.obtenerTodos();
@@ -164,6 +174,6 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			System.out.println(diccionario.getPalabra());
 		}
 		
-	}
+	}*/
 
 }

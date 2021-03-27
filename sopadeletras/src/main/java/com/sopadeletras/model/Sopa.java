@@ -3,21 +3,28 @@ package com.sopadeletras.model;
 public class Sopa {
 	
 	//propiedades
-	Integer idSopa = null;
-	int idJugador;
+	int idSopa;
+	String idJugador;
 	int puntos;
 	
 
 	public Sopa() {
-		// TODO Auto-generated constructor stub
-	}
-	
+		
+	}	
 
-	public Sopa(int idJugador, int puntos) {
+	public Sopa(String idJugador, int puntos) {
 		super();
 		this.idJugador = idJugador;
 		this.puntos = puntos;
 	}
+	
+	public Sopa(int idSopa, String idJugador, int puntos) {
+		this.idSopa = idSopa;
+		this.idJugador = idJugador;
+		this.puntos = puntos;
+	}
+	
+	
 
 	public int getIdSopa() {
 		return idSopa;
@@ -29,12 +36,12 @@ public class Sopa {
 	}
 
 
-	public int getIdJugador() {
+	public String getIdJugador() {
 		return idJugador;
 	}
 
 
-	public void setIdJugador(int idJugador) {
+	public void setIdJugador(String idJugador) {
 		this.idJugador = idJugador;
 	}
 

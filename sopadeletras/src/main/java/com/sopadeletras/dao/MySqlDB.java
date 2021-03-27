@@ -9,14 +9,15 @@ public class MySqlDB {
 	//Declaramos nuestra conexión a null
 	private Connection conexion = null;
 	//Declaramos la url de mysql
-	private final String HOST = "jdbc:mysql://localhost:3306/sopadeletras";
+	private final String HOST = "jdbc:mysql://localhost:3306/sopadeletras2";
 	//Declaramos el user de mysql
 	private final String USER = "root";
 	//Declaramos la password de mysql
 	private final String PASS = "";
 	
 	public Connection conectar() throws SQLException {
-		try {			
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection(HOST, USER, PASS);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -3,23 +3,26 @@ package com.sopadeletras.model;
 public class Diccionario {
 	
 	//propiedades
-	Integer idPalabra;
+	int idPalabra;
 	String palabra;
 	
-
+	//Contructor vacio
 	public Diccionario() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
+	//Contructor con palabra de atributo
 	public Diccionario(String palabra) {
-		//super();
 		this.palabra = palabra;
 	}
-
-
-
+	
+	//Contructor con 2 atributos
+	public Diccionario(int idPalabra, String palabra) {
+		super();
+		this.idPalabra = idPalabra;
+		this.palabra = palabra;
+	}
+	
+	//Getter and Setters
 	public int getIdPalabra() {
 		return idPalabra;
 	}
