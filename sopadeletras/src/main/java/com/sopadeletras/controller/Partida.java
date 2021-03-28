@@ -31,24 +31,14 @@ public class Partida extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		DiccionarioDAO diccionarioDB = new DiccionarioDAO();
-		String palabra = diccionarioDB.obtener(2).getPalabra();
-		//List<Diccionario> listaPalabras = null;
-		//Object palabras;
 		List<Diccionario> listaPalabras = diccionarioDB.obtenerTodos();
-		String palabras = "esto es una string de prueba";
-		request.setAttribute("palabras", palabras);
-		request.setAttribute("palabra", palabra);
+		
+
 		request.setAttribute("listaPalabras", listaPalabras);
 		 
 		request.getRequestDispatcher("partida.jsp").forward(request, response);
-		/*DiccionarioDAO prueba = new DiccionarioDAO();
-		List<Diccionario> listPalabras2 = prueba.obtenerTodos();
-		for (Diccionario diccionario : listPalabras2) {
-			System.out.println(diccionario.getPalabra());
-			}*/
 	}
 
 	/**
