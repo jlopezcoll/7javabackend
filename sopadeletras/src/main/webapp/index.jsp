@@ -1,4 +1,6 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,12 @@
 </head>
 <body>
 <div class="container">
+	<c:if test ="${not empty param.username}">
+		<div class="alert alert-danger" role="alert">
+			<P>El usuario <strong><c:out value="${param.username}"></c:out></strong> o la contraseña no es válido</P>
+		</div>
+	</c:if>
+
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
