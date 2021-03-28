@@ -1,0 +1,21 @@
+CREATE DATABASE sopadeletras;
+USE sopadeletras;
+
+CREATE TABLE Palabras (
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    Palabra VARCHAR(10) NOT NULL UNIQUE
+);
+
+CREATE TABLE Partidas (
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    Jugador INT NOT NULL,
+    Puntuacion INT NOT NULL DEFAULT 0,
+    Fecha DATE NOT NULL
+);
+
+INSERT INTO Palabras(Palabra) VALUES ("DIAGRAMA");
+INSERT INTO Palabras(Palabra) VALUES ("PROYECTO");
+INSERT INTO Palabras(Palabra) VALUES ("RUBRICA");
+INSERT INTO Palabras(Palabra) VALUES ("JUGADOR");
+INSERT INTO Palabras(Palabra) VALUES ("JUEGO");
+INSERT INTO Palabras(Palabra) VALUES ("TIEMPO");
