@@ -36,20 +36,5 @@
   			</table>
 		</div>
 	</div>
-<h1>HOLA</h1>
-<%-- <h2>Con clave <%=request.getParameter("palabras")%></h2>
-<h2><c:out value="${palabras}"></c:out></h2>
-
-<h2><c:out value="${palabra}"></c:out></h2> --%>
-<h2>
-<c:forEach items="${listaPalabras}" var="diccionario">
-		<c:out value="${diccionario.idPalabra}"></c:out>
-		<c:out value="${diccionario.palabra}"></c:out>
-</c:forEach>
-<c:forEach items="${listaPalabras}" var="item">
-    ${item}<br>
-</c:forEach>
-</h2>
-
 </body>
 </html>
