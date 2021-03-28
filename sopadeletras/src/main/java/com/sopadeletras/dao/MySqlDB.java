@@ -15,23 +15,26 @@ public class MySqlDB {
 	//Declaramos la password de mysql
 	private final String PASS = "";
 	
-	public Connection conectar() throws SQLException {
+	//Metodo para conectar a la BD
+	public Connection conectar(){
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conexion = DriverManager.getConnection(HOST, USER, PASS);
 		} catch (Exception e) {
+			System.out.println("Error al conectar a la BD");	
 			e.printStackTrace();
-		}
-		//System.out.println("Estoy conectado");		
+		}	
 		return conexion;
 	}
 	
-	public void desconetar() throws SQLException{
+	
+	//Metodo para desconectar de BD
+	public void desconetar(){
 		if (conexion != null) {
 		try {
 			conexion.close();
-			//conexion = null;
 		} catch (SQLException e) {
+			System.out.println("Eror al desconectar de la BD");	
 			e.printStackTrace();
 		}
 	}
