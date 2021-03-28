@@ -24,14 +24,11 @@ public class Login extends HttpServlet {
      */
     public Login() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void procesoAutentificacionLDAP(HttpServletRequest request, HttpServletResponse response)
     		   throws ServletException, IOException {
 
-    		  final String SUCCESS = "sucess.jsp";
-    		  final String FAILURE = "failure.jsp";
     		  String strUrl = "index.jsp";
     		  String username = request.getParameter("username");
     		  String password = request.getParameter("password");
@@ -61,18 +58,18 @@ public class Login extends HttpServlet {
     			  autentificado = false;
     		  } finally {
     			  if (autentificado) {
-    				  System.out.print("Success");
-    				  strUrl = SUCCESS;
+    				  //System.out.print("Success");
+    				  response.sendRedirect("/com.sopadeletras/partida");
     			   }else {
-    				  System.out.print("Failure");
-    				  strUrl = FAILURE;
+    				  //System.out.print("Failure");    				  
+    				  RequestDispatcher rd = request.getRequestDispatcher(strUrl);
+    	    		  rd.forward(request, response);
+
     		   }
     		  }
-    		  //Enviamos a JSP correspondiente
-    		  RequestDispatcher rd = request.getRequestDispatcher(strUrl);
-    		  rd.forward(request, response);
 
-    		 }
+
+	 }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
