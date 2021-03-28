@@ -14,7 +14,7 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 	private MySqlDB MySqlDB = new MySqlDB();
 
 	@Override
-	public void insertar(Sopa t) throws SQLException {
+	public void insertar(Sopa t){
 		Connection conn = null;
 		PreparedStatement stat = null;
 		ResultSet rs = null;
@@ -39,7 +39,7 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 	}
 
 	@Override
-	public void modificar(Sopa t) throws SQLException {
+	public void modificar(Sopa t){
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
@@ -58,7 +58,7 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 	}
 
 	@Override
-	public void eliminar(Sopa t) throws SQLException {
+	public void eliminar(Sopa t){
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
@@ -113,12 +113,7 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 					e.printStackTrace();
 				}				
 			}
-			try {
-				MySqlDB.desconetar();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			MySqlDB.desconetar();
 		}
 		return sopa;
 	}

@@ -14,7 +14,7 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 	private MySqlDB MySqlDB = new MySqlDB();
 
 	@Override
-	public void insertar(Diccionario t) throws SQLException {
+	public void insertar(Diccionario t){
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
@@ -23,28 +23,22 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			stat = conn.prepareStatement(query);
 			stat.setString(1, t.getPalabra());
 			stat.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (stat != null) {
-				try {
-					stat.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
+			stat.close();
 			MySqlDB.desconetar();
+		} catch (SQLException e) {
+			System.out.println("Error en la inserción de la palabra");
+			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void modificar(Diccionario t) throws SQLException {
+	public void modificar(Diccionario t){
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void eliminar(Diccionario t) throws SQLException {
+	public void eliminar(Diccionario t){
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
@@ -53,17 +47,11 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			stat = conn.prepareStatement(query);
 			stat.setString(1, t.getPalabra());
 			stat.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (stat != null) {
-				try {
-					stat.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
+			stat.close();
 			MySqlDB.desconetar();
+		} catch (SQLException e) {
+			System.out.println("Error al eliminar la palabra");
+			e.printStackTrace();
 		}
 	}
 
@@ -83,29 +71,12 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 				palabra = new Diccionario(rs.getInt(1), rs.getString(2));
 				palabras.add(palabra);
 			}
+			rs.close();
+			stat.close();
+			MySqlDB.desconetar();
 		} catch (SQLException e) {
+			System.out.println("Error en la obtención de la palabra");
 			e.printStackTrace();
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
-			if (stat != null) {
-				try {
-					stat.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
-			try {
-				MySqlDB.desconetar();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return palabras;	
 	}
@@ -125,30 +96,12 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			if (rs.next()) {
 				palabra = new Diccionario(rs.getString(2));
 			}
-
+			rs.close();
+			stat.close();
+			MySqlDB.desconetar();
 		} catch (SQLException e) {
+			System.out.println("Error en la obtención de la palabra");
 			e.printStackTrace();
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
-			if (stat != null) {
-				try {
-					stat.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}				
-			}
-			try {
-				MySqlDB.desconetar();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return palabra;
 	}
@@ -165,8 +118,8 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 			//System.out.println(diccionario.getPalabra());
 		//}
 		//System.out.println("--------- Insertamos una palabra -----------------------");
-		//Diccionario nuevaPalabra = new Diccionario("motor");
-		//prueba.insertar(nuevaPalabra);
+		Diccionario nuevaPalabra = new Diccionario("alicate");
+		prueba.insertar(nuevaPalabra);
 		//prueba.eliminar(nuevaPalabra);
 		System.out.println("--------- Listado con palabra insertada -----------------------");
 		List<Diccionario> listPalabras2 = prueba.obtenerTodos();
