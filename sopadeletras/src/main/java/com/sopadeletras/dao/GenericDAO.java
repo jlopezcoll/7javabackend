@@ -1,16 +1,15 @@
 package com.sopadeletras.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 
 public interface GenericDAO<T, K> {
 	
-	void insertar(T t) throws SQLException;
+	void insertar(T t);
 	
-	void modificar(T t) throws SQLException;
+	void modificar(T t);
 	
-	void eliminar(T t) throws SQLException;
+	void eliminar(T t);
 	
 	List<T> obtenerTodos();
 	
