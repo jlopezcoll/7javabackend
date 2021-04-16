@@ -17,6 +17,10 @@ public class Sopa implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	//private static final long serialVersionUID = 1L;
 	//propiedades
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
