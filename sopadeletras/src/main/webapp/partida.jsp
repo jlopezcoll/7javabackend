@@ -8,33 +8,52 @@
 	<title>7J - Sopa de letras</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">   
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">		
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/wordfind.css">			
     <script src="js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="js/jquery.min.js"></script>    
+        <!-- Librerias para generar el juego -->
+    <script type="text/javascript" src="js/wordfind.js"></script>
+    <script type="text/javascript" src="js/wordfindgame.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="d-flex justify-content-center h-100">
-			<table class="table table-striped">
-  				<thead>
-	  				<tr>
-	  					<th scope="col">IdPalabra</th>
-	      				<th scope="col">Palabra</th>
-	  				</tr>
-  				</thead>
-	  				<tbody>
-	  				<c:forEach items="${listaPalabras}" var="diccionario">
-					    <tr>
-					      <th scope="row">
-					      	<c:out value="${diccionario.idPalabra}"></c:out>
-					      </th>
-					      <td>
-					      	<c:out value="${diccionario.palabra}"></c:out>
-					      </td>
-					    </tr>
-					</c:forEach>					    
-				    </tbody>
-  			</table>
-		</div>
-	</div>
+	
+	<div><button id="solve">RESOLVER</button></div>
+	
+<div id='puzzle'></div>
+<div id='words'></div>
+
+<!-- <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="../src/wordfind.js"></script> -->
+<!-- <script type="text/javascript" src="scripts/wordfindgame.js"></script> -->
+<script>
+
+ 
+  var words = [];
+  
+  	<c:forEach items="${listaPalabras}" var="diccionario"> 
+  	words.push("${diccionario.palabra}");
+  	</c:forEach>
+  	
+
+
+  
+   var puzzle = wordfind.newPuzzle(words, {
+      height: 10,
+      width: 10,
+      fillBlanks: false
+  });
+   
+   // start a word find game
+   var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
+  
+  $('#solve').click(function() {
+      wordfindgame.solve(gamePuzzle, words);
+  });
+
+</script>
+	
+	
 </body>
 </html>
