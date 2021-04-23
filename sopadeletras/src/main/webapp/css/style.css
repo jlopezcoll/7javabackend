@@ -84,3 +84,8 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+#timer {
+  font-size:50px;
+  color:#434343;
+}
