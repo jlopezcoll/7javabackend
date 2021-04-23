@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
@@ -30,6 +31,7 @@ public class Login extends HttpServlet {
     		   throws ServletException, IOException {
 
     		  String strUrl = "index.jsp";
+    		  //String strUrl2 = "partida.jsp";
     		  String username = request.getParameter("username");
     		  String password = request.getParameter("password");
 
@@ -59,7 +61,11 @@ public class Login extends HttpServlet {
     		  } finally {
     			  if (autentificado) {
     				  //System.out.print("Success");
+    				  HttpSession session=request.getSession();
+    			      session.setAttribute("user",username);
     				  response.sendRedirect("/com.sopadeletras/partida");
+    				  //RequestDispatcher rd = request.getRequestDispatcher(strUrl2);
+    	    		  //rd.forward(request, response);
     			   }else {
     				  //System.out.print("Failure");    				  
     				  RequestDispatcher rd = request.getRequestDispatcher(strUrl);
