@@ -3,6 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<% if (session.getAttribute("user")== null)
+    {
+%>
+    <jsp:forward page="index.jsp"></jsp:forward>
+
+<% }
+if (request.getParameter("salir")!= null)
+    {
+    session.invalidate();
+    %>
+    <jsp:forward page="index.jsp"></jsp:forward>
+   <% } %>
+
 <head>
 	<meta charset="UTF-8">
 	<title>7J - Sopa de letras</title>
@@ -18,9 +31,14 @@
     <script type="text/javascript" src="js/wordfindgame.js"></script>
 </head>
 <body>
-	
+	<form>	
+		<div class="form-group text-center">
+			<input type="submit" value="Salir" name="salir" class="btn login_btn">
+		</div>
+	</form>
+	<p><%= session.getAttribute("user") %></p>
 	<div><button id="solve">RESOLVER</button></div>
-	
+	<div id="timer"></div>
 <div id='puzzle'></div>
 <div id='words'></div>
 
@@ -28,6 +46,14 @@
 <!-- <script type="text/javascript" src="../src/wordfind.js"></script> -->
 <!-- <script type="text/javascript" src="scripts/wordfindgame.js"></script> -->
 <script>
+
+
+var n = 0;
+var l = document.getElementById("timer");
+window.setInterval(function(){
+  l.innerHTML = n;
+  n++;
+},1000);
 
  
   var words = [];
