@@ -31,6 +31,17 @@ if (request.getParameter("salir")!= null)
     <script type="text/javascript" src="js/wordfindgame.js"></script>
 </head>
 <body>
+
+	<jsp:useBean id="juego" class="com.sopadeletras.controller.Juego" scope="session"/>
+	<% juego.setJugador((String)session.getAttribute("user")); %>
+	<% juego.setPuntuacion(6666); %>
+
+
+<%-- <p>El nombre es <jsp:getProperty name="juego" property="sopa.idJugador"/></p> --%>
+
+<p><%= juego.getPuntuacion() %></p>
+
+
 	<form>	
 		<div class="form-group text-center">
 			<input type="submit" value="Salir" name="salir" class="btn login_btn">
@@ -45,7 +56,30 @@ if (request.getParameter("salir")!= null)
 <!-- <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 <!-- <script type="text/javascript" src="../src/wordfind.js"></script> -->
 <!-- <script type="text/javascript" src="scripts/wordfindgame.js"></script> -->
+
+
+	
 <script>
+
+hasAcertado = function(){
+	<% juego.guardarPartida(); %>
+	alert("HAS GANADO!!!");
+	window.location.reload();
+};
+
+
+
+$(document).ready(function(){
+	function isWinner(){
+		if ($('.puzzleSquare').hasClass('complete')){
+			hasAcertado();
+		}
+	}setInterval(isWinner, 3000);
+
+
+});
+
+
 
 
 var n = 0;
@@ -79,7 +113,7 @@ window.setInterval(function(){
   });
 
 </script>
-	
+
 	
 </body>
 </html>

@@ -13,7 +13,7 @@ public class Sopa {
 	}	
 
 	public Sopa(String idJugador, int puntos) {
-		super();
+		//super();
 		this.idJugador = idJugador;
 		this.puntos = puntos;
 	}
