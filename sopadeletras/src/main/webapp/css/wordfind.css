@@ -35,7 +35,7 @@ h1 {
 */
 #puzzle {
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 3vw;
 }
 
@@ -111,7 +111,7 @@ button::-moz-focus-inner {
 
 #words li {
   padding: 3px 0;
-  font: 1em sans-serif;
+  font: 2em sans-serif;
 }
 
 /* indicates that the word has been found */
@@ -145,7 +145,7 @@ input[type="number"] {
 select {
   max-width: 10rem;
 }
-#create-grid, #solve {
+#create-grid {
   display: block;
   margin-top: 1rem;
 }

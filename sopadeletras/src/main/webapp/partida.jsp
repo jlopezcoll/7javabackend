@@ -32,27 +32,36 @@ if (request.getParameter("salir")!= null)
 </head>
 <body>
 
-	<jsp:useBean id="juego" class="com.sopadeletras.controller.Juego" scope="session"/>
-	<% juego.setJugador((String)session.getAttribute("user")); %>
-	<% juego.setPuntuacion(6666); %>
+	<div class="alert alert-success text-center fade" role="alert" id="puntosAlert">
+			<p><strong>¡¡Enhorabuena!! Se ha guardado tu puntuación</strong></p>			
+			<form><input type="submit" value="jugar de nuevo" class="btn btn-dark"></form>
+	</div>
 
+<div class="container">
 
-<%-- <p>El nombre es <jsp:getProperty name="juego" property="sopa.idJugador"/></p> --%>
-
-<p><%= juego.getPuntuacion() %></p>
-
-
-	<form>	
-		<div class="form-group text-center">
-			<input type="submit" value="Salir" name="salir" class="btn login_btn">
+	<div class="row w-100">
+		<div class="col-md-4 text-center">
+			<button type="button" id="solve" class="btn btn-warning btn-lg">Resolver</button>
 		</div>
-	</form>
-	<p><%= session.getAttribute("user") %></p>
-	<div><button id="solve">RESOLVER</button></div>
-	<div id="timer"></div>
-<div id='puzzle'></div>
-<div id='words'></div>
+		<div class="col-md-4 text-center">
+			<h2>Bienvenido <%= session.getAttribute("user") %></h2>
+			<div id="timer">0</div>
+		</div>
+		<div class="col-md-4 text-center">
+			<form><input type="submit" value="Salir" name="salir" class="btn btn-danger btn-lg"></form>
+		</div>
+	</div>
+	<div class="row w-100">
+	<div id='puzzle'></div>
+	
+<div id='words'>Estas son las palabras que debes encontrar</div>
+	</div>
+	
+
+	
+
 <h3 id="result"></h3>
+</div>
 
 <!-- <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 <!-- <script type="text/javascript" src="../src/wordfind.js"></script> -->
@@ -75,76 +84,44 @@ function voyComprobando(){
 	t++
 }
 
-// var l = document.getElementById("timer");
-// window.setInterval(function(){
-//   l.innerHTML = tiempo;
-//   if ($('.puzzleSquare').hasClass('complete')){
-// 		hasAcertado();
-// 		return;
-// 	}
-//   t++;
-// },1000);
-
-
-var hasAcertado = function(){
-	
+var hasAcertado = function(){	
 	$.ajax({
 		type: "POST",
 		url: "partida",
 		data: {tiempo: t},
 		success: function(resultText){
-			$('#result').html("ganas");
-			alert("HAS GANADO!!!");
-			window.location.reload();
+			$("#puntosAlert").addClass("show"); 
 		},
 		error: function(jqXHR, exception){
 			console.log('Error occured!!');
 		}		
 	})
-	clearInterval(timer);
-	
-	
+	clearInterval(timer);	
 };
 
 
-
-// $(document).ready(function(){
-// 	function isWinner(){
-// 		if ($('.puzzleSquare').hasClass('complete')){
-// 			hasAcertado();
-// 			//return;
-// 		}
-// 	}setInterval(isWinner, 5000);
-// });
-
-
-
+ var words = [];
  
-  var words = [];
-  
-  	<c:forEach items="${listaPalabras}" var="diccionario"> 
-  	words.push("${diccionario.palabra}");
-  	</c:forEach>
-  	
-
+<c:forEach items="${listaPalabras}" var="diccionario"> 
+	words.push("${diccionario.palabra}");
+</c:forEach>
 
   
-   var puzzle = wordfind.newPuzzle(words, {
-      height: 10,
-      width: 10,
-      fillBlanks: false
-  });
+ var puzzle = wordfind.newPuzzle(words, {
+    height: 10,
+    width: 10,
+    fillBlanks: false
+});
    
-   // start a word find game
-   var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
+
+var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
   
-  $('#solve').click(function() {
-	  clearInterval(timer);
-      wordfindgame.solve(gamePuzzle, words);
-  });
+ $('#solve').click(function() {
+  clearInterval(timer);
+     wordfindgame.solve(gamePuzzle, words);
+ });
 
 </script>
-
 	
 </body>
 </html>
