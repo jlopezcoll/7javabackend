@@ -17,6 +17,7 @@ public class Diccionario implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	//propiedades
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
