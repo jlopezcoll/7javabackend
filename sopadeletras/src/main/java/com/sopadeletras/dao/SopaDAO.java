@@ -28,6 +28,9 @@ public class SopaDAO implements GenericDAO<Sopa, Integer>{
 
 	@Override
 	public void modificar(Sopa t){
+		manager.getTransaction().begin();
+		manager.merge(t);
+		manager.getTransaction().commit();
 	}
 
 	@Override

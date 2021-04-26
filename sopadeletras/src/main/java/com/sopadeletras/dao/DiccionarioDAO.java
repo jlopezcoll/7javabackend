@@ -27,8 +27,9 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 	}
 	@Override
 	public void modificar(Diccionario t){
-		// TODO Auto-generated method stub
-
+		manager.getTransaction().begin();
+		manager.merge(t);
+		manager.getTransaction().commit();
 	}
 
 	
@@ -52,30 +53,5 @@ public class DiccionarioDAO implements GenericDAO<Diccionario, Integer> {
 		return manager.find(Diccionario.class, id);
 		
 	}
-
-	//Pruebas de funcionamiento
-	//public static void main(String[] args){
-		//DiccionarioDAO prueba = new DiccionarioDAO();
-		//System.out.println(prueba.obtener(2).getPalabra());
-		//System.out.println(prueba.obtener(5).getPalabra());
-		//System.out.println(prueba.obtener(3).getPalabra());
-		//System.out.println("--------------------------------");
-		//Diccionario nuevaPalabra = new Diccionario("dado");
-		//prueba.insertar(nuevaPalabra);
-		//List<Diccionario> listPalabras = prueba.obtenerTodos();
-		//for (Diccionario diccionario : listPalabras) {
-			//System.out.println(diccionario.getPalabra());
-		//}
-		//System.out.println("--------- Insertamos una palabra -----------------------");
-		//Diccionario nuevaPalabra = new Diccionario("canario");
-		//prueba.insertar(nuevaPalabra);
-		//prueba.eliminar(nuevaPalabra);
-		//System.out.println("--------- Listado con palabra insertada -----------------------");
-		//List<Diccionario> listPalabras2 = prueba.obtenerTodos();
-		//for (Diccionario diccionario : listPalabras2) {
-			//System.out.println(diccionario.getPalabra());
-		//}
-		
-	//}
 
 }
