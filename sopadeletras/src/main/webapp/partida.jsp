@@ -19,10 +19,11 @@ if (request.getParameter("salir")!= null)
 <head>
 	<meta charset="UTF-8">
 	<title>7J - Sopa de letras</title>
+	<link rel="stylesheet" type="text/css" href="css/wordfind.css">	
     <link rel="stylesheet" href="css/bootstrap.min.css">   
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/wordfind.css">			
+    		
     <script src="js/bootstrap.min.js"></script>
     
     <script type="text/javascript" src="js/jquery.min.js"></script>    
@@ -33,7 +34,7 @@ if (request.getParameter("salir")!= null)
 <body>
 
 	<div class="alert alert-success text-center fade" role="alert" id="puntosAlert">
-			<p><strong>¡¡Enhorabuena!! Se ha guardado tu puntuación</strong></p>			
+			<p>¡¡Enhorabuena!! Se ha guardado tu puntuación de <strong><span id="puntos"></span></strong></p>			
 			<form><input type="submit" value="jugar de nuevo" class="btn btn-dark"></form>
 	</div>
 
@@ -44,7 +45,7 @@ if (request.getParameter("salir")!= null)
 			<button type="button" id="solve" class="btn btn-warning btn-lg">Resolver</button>
 		</div>
 		<div class="col-md-4 text-center">
-			<h2>Bienvenido <%= session.getAttribute("user") %></h2>
+			<h1>Bienvenido <%= session.getAttribute("user") %></h1>
 			<div id="timer">0</div>
 		</div>
 		<div class="col-md-4 text-center">
@@ -52,15 +53,14 @@ if (request.getParameter("salir")!= null)
 		</div>
 	</div>
 	<div class="row w-100">
-	<div id='puzzle'></div>
-	
-<div id='words'>Estas son las palabras que debes encontrar</div>
+		<div class="col-md-8">
+			<div id='puzzle'></div>
+		</div>
+		<div class="col-md-4">
+			<p>Estas son las palabras que debes encontrar</p>
+			<div id='words'></div>	
+		</div>
 	</div>
-	
-
-	
-
-<h3 id="result"></h3>
 </div>
 
 <!-- <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
@@ -89,7 +89,8 @@ var hasAcertado = function(){
 		type: "POST",
 		url: "partida",
 		data: {tiempo: t},
-		success: function(resultText){
+		success: function(dataresult){
+			$('#puntos').text(dataresult);    
 			$("#puntosAlert").addClass("show"); 
 		},
 		error: function(jqXHR, exception){
