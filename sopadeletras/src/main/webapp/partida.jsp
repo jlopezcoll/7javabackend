@@ -52,6 +52,7 @@ if (request.getParameter("salir")!= null)
 	<div id="timer"></div>
 <div id='puzzle'></div>
 <div id='words'></div>
+<h3 id="result"></h3>
 
 <!-- <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 <!-- <script type="text/javascript" src="../src/wordfind.js"></script> -->
@@ -61,33 +62,62 @@ if (request.getParameter("salir")!= null)
 	
 <script>
 
-hasAcertado = function(){
-	<% juego.guardarPartida(); %>
-	alert("HAS GANADO!!!");
-	window.location.reload();
+var timer = setInterval(voyComprobando, 1000);
+
+var t = 0;
+
+function voyComprobando(){
+	var l = document.getElementById("timer");
+	l.innerHTML = t;
+	if ($('.puzzleSquare').hasClass('complete')){
+		hasAcertado();
+	}
+	t++
+}
+
+// var l = document.getElementById("timer");
+// window.setInterval(function(){
+//   l.innerHTML = tiempo;
+//   if ($('.puzzleSquare').hasClass('complete')){
+// 		hasAcertado();
+// 		return;
+// 	}
+//   t++;
+// },1000);
+
+
+var hasAcertado = function(){
+	
+	$.ajax({
+		type: "POST",
+		url: "partida",
+		data: {tiempo: t},
+		success: function(resultText){
+			$('#result').html("ganas");
+			alert("HAS GANADO!!!");
+			window.location.reload();
+		},
+		error: function(jqXHR, exception){
+			console.log('Error occured!!');
+		}		
+	})
+	clearInterval(timer);
+	
+	
 };
 
 
 
-$(document).ready(function(){
-	function isWinner(){
-		if ($('.puzzleSquare').hasClass('complete')){
-			hasAcertado();
-		}
-	}setInterval(isWinner, 3000);
+// $(document).ready(function(){
+// 	function isWinner(){
+// 		if ($('.puzzleSquare').hasClass('complete')){
+// 			hasAcertado();
+// 			//return;
+// 		}
+// 	}setInterval(isWinner, 5000);
+// });
 
 
-});
-
-
-
-
-var n = 0;
-var l = document.getElementById("timer");
-window.setInterval(function(){
-  l.innerHTML = n;
-  n++;
-},1000);
 
  
   var words = [];
@@ -109,6 +139,7 @@ window.setInterval(function(){
    var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
   
   $('#solve').click(function() {
+	  clearInterval(timer);
       wordfindgame.solve(gamePuzzle, words);
   });
 

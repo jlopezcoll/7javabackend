@@ -15,7 +15,7 @@
 <body>
 <div class="container">
 	<c:if test ="${not empty param.username}">
-		<div class="alert alert-danger" role="alert">
+		<div class="alert alert-danger text-center" role="alert">
 			<P>El usuario <strong><c:out value="${param.username}"></c:out></strong> o la contraseña no es válido</P>
 		</div>
 	</c:if>
