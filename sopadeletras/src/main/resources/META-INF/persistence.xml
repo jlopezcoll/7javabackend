@@ -5,7 +5,8 @@
 
   <persistence-unit name="sopadeletras">
   
-  	<class>com.sopadeletras.model.hibernate.Sopa</class>
+  	<class>com.sopadeletras.model.Sopa</class>
+  	<class>com.sopadeletras.model.Diccionario</class>
   
     <properties>
         <!-- <property name="javax.persistence.jdbc.driver" value="org.hibernate.dialect.MySQLDialect" /> -->
