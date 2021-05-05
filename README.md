@@ -15,7 +15,7 @@ _Será necesario_
 Tener implementado un directorio con protocolo Lightweight Directory Access Protocol (LDAP)
 ```
 
-## Herramientas 🛠�?
+## Herramientas 🛠️
 
 _Estas son las herramientas que hemos usado en el producto 1_
 
@@ -28,7 +28,7 @@ _Estas son las herramientas que hemos usado en el producto 1_
 * [Bootstrap](https://getbootstrap.com/) - Framework para la interfaz de usuario
 
 
-### Autores ✒�?
+### Autores ✒️
 
 _Estos son los estudiantes que participan en este proyecto_
 
@@ -36,7 +36,7 @@ _Estos son los estudiantes que participan en este proyecto_
 * **Alejandro Vicente Ginestar Pedro** - [correo UOC](mailto:avgp@uoc.edu)
 * **Marcos López Collar** - [correo UOC](mailto:jlopezcoll@uoc.edu)
 
-### Con Gratitud �?
+### Con Gratitud 🎁
 
 A nuestro consultor de la UOC. Un apasionado del desarrollo y las tecnologías
 [Paco Gómez Arnal](https://www.youtube.com/c/PacoGomez) 😊 📢
