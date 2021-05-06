@@ -5,7 +5,7 @@ _Desarrollado para la UOC y el proyecto **(ICC02_P7) Aplicación backend con tec
 ## Introducción 🚀
 
 _Hemos comenzado con el **Producto1** en el que instalamos el entorno de desarrollo y programamos un servlet para la autentificación LDAP._  
-_Continuamos con el **Producto2** en el cual conmenzaremos con el diseño MVC y con la persistencia de datos en MySQL aplicando el patrón DAO y JDBC._  
+_Continuamos con el **Producto2** en el cual comenzamos con el diseño MVC y con la persistencia de datos en MySQL aplicando el patrón DAO y JDBC._  
 _En el **Producto3** desarrollamos nuestra aplicación final mostrando vistas mediante JSP, interacción con jQuery, aplicando tecnología Ajax y realizando persistencia con mapeo OR mediante JPA._  
 _En el último **Producto4** se documenta la implentación, configuración y uso de la aplicación. Y se realiza un análisis de las interfaces EJB._
 
@@ -15,6 +15,12 @@ _Será necesario_
 
 ```
 Tener implementado un directorio con protocolo Lightweight Directory Access Protocol (LDAP)
+```
+```
+Disponer de un servidor de aplicaciones Tomcat
+```
+```
+Correr la BD MySql necesaria para la persistencía del juego
 ```
 
 ## Herramientas 🛠️
