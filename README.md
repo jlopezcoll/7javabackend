@@ -45,7 +45,7 @@ _Estos son los estudiantes que participan en este proyecto_
 * **Alejandro Vicente Ginestar Pedro** - [correo UOC](mailto:avgp@uoc.edu)
 * **Marcos López Collar** - [correo UOC](mailto:jlopezcoll@uoc.edu)
 
-## Con Gratitud 🎁
+### Con Gratitud 🎁
 
 A nuestro consultor de la UOC. Un apasionado del desarrollo y las tecnologías
 [Paco Gómez Arnal](https://www.youtube.com/c/PacoGomez) 😊 📢
