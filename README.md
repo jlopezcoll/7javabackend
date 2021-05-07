@@ -37,7 +37,7 @@ _Estas son las herramientas que hemos usado para el desarrollo del proyecto_
 * [jQuery](https://jquery.com/) - Biblioteca JavaScript para manipular el DOM e interacción con AJAX
 
 
-### Autores ✒️
+## Autores ✒️
 
 _Estos son los estudiantes que participan en este proyecto_
 
@@ -45,7 +45,7 @@ _Estos son los estudiantes que participan en este proyecto_
 * **Alejandro Vicente Ginestar Pedro** - [correo UOC](mailto:avgp@uoc.edu)
 * **Marcos López Collar** - [correo UOC](mailto:jlopezcoll@uoc.edu)
 
-### Con Gratitud 🎁
+## Con Gratitud 🎁
 
 A nuestro consultor de la UOC. Un apasionado del desarrollo y las tecnologías
 [Paco Gómez Arnal](https://www.youtube.com/c/PacoGomez) 😊 📢
