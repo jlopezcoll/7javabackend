@@ -11,8 +11,6 @@ _En el último **Producto4** se documenta la implentación, configuración y uso
 
 ## Requisitos 📋
 
-_Será necesario_
-
 ```
 Tener implementado un directorio con protocolo Lightweight Directory Access Protocol (LDAP)
 ```
@@ -25,7 +23,7 @@ Correr la BD MySql necesaria para la persistencía del juego
 
 ## Herramientas 🛠️
 
-_Estas son las herramientas que hemos usado en el producto 1_
+_Estas son las herramientas que hemos usado para el desarrollo del proyecto_
 
 * [Eclipse](https://www.eclipse.org/) - IDE para Enterprise Java Developers
 * [JDK](https://www.oracle.com/es/java/technologies/javase/javase-jdk8-downloads.html) - Java SE Development Kit 8
@@ -34,6 +32,9 @@ _Estas son las herramientas que hemos usado en el producto 1_
 * [OpenLDAP](https://www.openldap.org/) - Implementación libre del protocolo LDAP
 * [Turnkey Linux](https://www.turnkeylinux.org/openldap/) - Distribución de Linux con la implementación LDAP
 * [Bootstrap](https://getbootstrap.com/) - Framework para la interfaz de usuario
+* [MySQL](https://www.mysql.com/) - BD para la persistencia del juego
+* [Hibernate](https://hibernate.org/) - Herramienta de mapeo objeto-relacional
+* [jQuery](https://jquery.com/) - Biblioteca JavaScript para manipular el DOM e interacción con AJAX
 
 
 ### Autores ✒️
